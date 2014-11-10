@@ -11,7 +11,18 @@
 #include "ProgMemData.h"
 #include <util/setbaud.h>
 
+#ifndef F_CPU
+#error You Must declare F_CPU
+#endif
 
+#ifndef BAUD
+#error You must define BAUD to your desired BAUDrate
+#endif
+
+int main(void)
+{
+	
+}
 
 #if defined(__AVR_ATXMEGA128D3__) || defined(__AVR_ATXMEGA64A1U__) //Really any XMEGA Since they are all pretty much much compatible minus USB variations.
 
@@ -70,9 +81,11 @@ void Serial::SerialBeginXMEGA(baud_t baud)
 
 #endif
 
-#if defined(__AVR_ATMEGA328P__) || defined(__AVR_ATMEGA8__) || defined(__AVR_ATMEGA8A__) || defined(__AVR_ATMEGA168P)
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega8__) || defined(__AVR_ATmega8A__) || defined(__AVR_ATmega168P)
 
-#if defined(__AVR_ATMEGA328P__) || defined(__AVR_ATMEGA168P)
+
+
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168P__)
 
 #undef UDR
 #undef UCSRA
@@ -114,14 +127,22 @@ void configureSerial()
 
 void startSerial()
 {
-	UCSRB |= (1<<RXEN) | (1<<TXEN);
-	
+	UCSRB |= (1<<RXEN) | (1<<TXEN);	
 }
 
 
-void sendChar(char c) {
+void Serial::sendChar(char c) {
 	UDR = c;
 	loop_until_bit_is_set(UCSRA, TXC); /* Wait until transmission ready. */
+}
+
+void Serial::sendString(char *text)
+{
+	
+	while(*text)
+	{
+		sendChar(*text++)	;
+	}
 }
 
 char receiveByte() {
@@ -130,14 +151,7 @@ char receiveByte() {
 }
 
 
-#ifndef F_CPU
-#error You Must declare F_CPU
-#endif
 
-#ifndef BAUD
-#error You must define BAUD to your desired BAUDrate
-
-#endif
 
 	void Serial::SerialBegin()
 	{
@@ -146,4 +160,5 @@ char receiveByte() {
 		
 	}
 
-	#endif
+#endif
+

@@ -8,6 +8,18 @@ Discarded input sections
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o
  .text          0x00000000        0x0 Serial_USART.o
  .bss           0x00000000        0x0 Serial_USART.o
+ .text._Z15configureSerialv
+                0x00000000       0x16 Serial_USART.o
+ .text._Z11startSerialv
+                0x00000000        0xc Serial_USART.o
+ .text._ZN6Serial8sendCharEc
+                0x00000000       0x10 Serial_USART.o
+ .text._ZN6Serial10sendStringEPc
+                0x00000000       0x2a Serial_USART.o
+ .text._Z11receiveBytev
+                0x00000000       0x10 Serial_USART.o
+ .text._ZN6Serial11SerialBeginEv
+                0x00000000        0xa Serial_USART.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .text.libgcc.mul
@@ -142,7 +154,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000       0x86
+.text           0x00000000       0x8a
  *(.vectors)
  .vectors       0x00000000       0x68 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o
                 0x00000000                __vector_default
@@ -223,13 +235,13 @@ END GROUP
                 0x0000007c                __vector_20
                 0x00000080                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000080        0x2 Serial_USART.o
+ .text.main     0x00000080        0x6 Serial_USART.o
                 0x00000080                main
-                0x00000082                . = ALIGN (0x2)
+                0x00000086                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000082        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
-                0x00000082                _exit
-                0x00000082                exit
+ .fini9         0x00000086        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+                0x00000086                _exit
+                0x00000086                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -248,11 +260,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000082        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000086        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000086                _etext = .
+                0x0000008a                _etext = .
 
-.data           0x00800100        0x0 load address 0x00000086
+.data           0x00800100        0x0 load address 0x0000008a
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm328p.o
@@ -272,8 +284,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 0x00800100                PROVIDE (__bss_end, .)
-                0x00000086                __data_load_start = LOADADDR (.data)
-                0x00000086                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000008a                __data_load_start = LOADADDR (.data)
+                0x0000008a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800100        0x0
                 0x00800100                PROVIDE (__noinit_start, .)
@@ -339,37 +351,38 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x20
+.debug_aranges  0x00000000       0x50
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x20 Serial_USART.o
+                0x00000000       0x50 Serial_USART.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000       0xaf
+.debug_info     0x00000000      0x2dc
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000       0xaf Serial_USART.o
+ .debug_info    0x00000000      0x2dc Serial_USART.o
 
-.debug_abbrev   0x00000000       0x6a
+.debug_abbrev   0x00000000      0x1b1
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x6a Serial_USART.o
+ .debug_abbrev  0x00000000      0x1b1 Serial_USART.o
 
-.debug_line     0x00000000       0x54
+.debug_line     0x00000000      0x155
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000       0x54 Serial_USART.o
+ .debug_line    0x00000000      0x155 Serial_USART.o
 
-.debug_frame    0x00000000       0x24
+.debug_frame    0x00000000       0x98
  *(.debug_frame)
- .debug_frame   0x00000000       0x24 Serial_USART.o
+ .debug_frame   0x00000000       0x98 Serial_USART.o
 
-.debug_str      0x00000000      0x168
+.debug_str      0x00000000      0x2ba
  *(.debug_str)
- .debug_str     0x00000000      0x168 Serial_USART.o
-                                0x1a1 (size before relaxing)
+ .debug_str     0x00000000      0x2ba Serial_USART.o
+                                0x31d (size before relaxing)
 
-.debug_loc
+.debug_loc      0x00000000      0x100
  *(.debug_loc)
+ .debug_loc     0x00000000      0x100 Serial_USART.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -389,9 +402,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x10
+.debug_ranges   0x00000000       0x40
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x10 Serial_USART.o
+ .debug_ranges  0x00000000       0x40 Serial_USART.o
 
 .debug_macro
  *(.debug_macro)
